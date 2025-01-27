@@ -1,0 +1,53 @@
+sudo apt update
+sudo apt-get update
+nmcli d wifi connect CVADSJ -a
+ip a
+sudo systemctl enable ssh.service
+    5  sudo systemctl start ssh.service
+    7  sudo nano /etc/systemd/system/getty@tty1.service.d/autologin.conf
+    tempuser@cvadsign101:~ $ cat /etc/systemd/system/getty@tty1.service.d/autologin.conf
+    [Service]
+    ExecStart=
+    ExecStart=-/sbin/agetty --autologin admin --noclear %I $TERM
+    8  sudo systemctl daemon-reload
+   10  sudo reboot
+   12  sudo systemctl restart getty@tty1
+   13  nano ~/.rename_host.sh
+   14  chmod +x ~/.rename_host.sh
+   15  nano ~/.bash_profile
+   ~/.rename_host.sh
+    if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    startx  
+    fi
+   16  sudo reboot
+   19  sudo apt update
+   20  sudo apt-get update
+   24  ~/.start_chromium.sh
+   27  sudo apt update
+   28  sudo apt install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox chromium-browser
+   33  chmod +x start_chromium.sh
+   34  nano ~/.xinitrc  
+   exec ~/.start_chromium.sh
+   36  sudo usermod -aG tty,video cvadsign
+   37  sudo nano /etc/X11/xorg.conf.d/99-fbdev.conf 
+   38  sudo apt install xserver-xorg-legacy
+   39  sudo nano /etc/X11/Xwrapper.config
+   
+   Section "Device"
+    Identifier "FBDEV"
+    Driver "fbdev"
+   EndSection
+    
+   40  sudo reboot
+   41  startx
+   54  sudo rm ./.host_renamed
+   55  sudo reboot
+   56  nano .bash_profile
+   57  sudo reboot
+   sudo apt update
+sudo apt upgrade -y
+. /etc/os-release
+echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" | sudo tee /etc/apt/sources.list.d/backports.list
+sudo apt update
+sudo apt install -t ${VERSION_CODENAME}-backports cockpit
+hostname -I
