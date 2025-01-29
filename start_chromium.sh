@@ -22,4 +22,4 @@ openbox &
 rm -rf /home/cvadsign/temp_chrome_profile
 
 # Launch Chromium in kiosk mode with a fresh user profile
-chromium-browser --noerrdialogs --disable-infobars --kiosk --user-data-dir=/home/cvadsign/temp_chrome_profile 'https://cdn.signage.unt.edu/hostnames/$(hostname)/'
+chromium-browser --noerrdialogs --disable-infobars --kiosk --user-data-dir=/home/cvadsign/temp_chrome_profile https://cdn.signage.unt.edu/hostnames/$(hostname)/
